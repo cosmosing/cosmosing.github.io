@@ -1,0 +1,33 @@
+### 创建新用户
+- 命令 useradd
+- 命令 passwd
+```
+useradd xxx <回车>
+passwd xxx <回车>
+```
+
+#### useradd的初始化工作
+1. useradd所做的初始化操作已经包括在/home目录下为xxx帐号建立一个名为xxx的主目录。如果你不想使用这个缺省的目录，而希望把他的主目录放在/home/goal里(还放在/home下，只是一种良好的习惯，没有其他什么特别的要求)，可以使用useradd的参数-d，命令如下：
+
+```
+useradd -d /home/goal xxx
+```
+
+2. useradd的初始化操作还包括为用户单独建立一个与用户名同名的组(xxx组)。这叫用户私有组的机制，与默认组机制相对应。对用户分组一是方便管理，二是可以明确权限。复杂的我们将在以后的深入内容中探讨。我们如果想让此用户加入一个已有的组的话，可以使用-g参数。例如我们想让xxx加入webusers组，那么可以使用以下命令：
+
+```
+useradd -g webusers xxx
+```
+同样的，我们还可以使用-G参数使他同时加入多个组，例如webusers和ftpusers：
+```
+useradd -G ftpusers,webusers xxx
+```
+
+#### passwd的初始化工作
+> 它实质上是一个修改密码的程序。只有超级用户和用户自己可以修改密码，其它的普通用户没有给他修改密码的权利。
+
+### 删除用户xxx
+
+```
+userdel xxx
+```
